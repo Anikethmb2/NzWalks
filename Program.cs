@@ -8,8 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Adding Database DI
+// builder.Services.AddDbContext<NzWalkDbContext>(options =>
+// options.UseSqlServer(builder.Configuration.GetConnectionString("NzWalkConnectionString")));
+
 builder.Services.AddDbContext<NzWalkDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("NzWalkConnectionString")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NzWalkConnectionString")));
+
 
 var app = builder.Build();
 
