@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers();
 //Adding Database DI
 // builder.Services.AddDbContext<NzWalkDbContext>(options =>
 // options.UseSqlServer(builder.Configuration.GetConnectionString("NzWalkConnectionString")));
@@ -27,5 +29,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+
+app.MapControllers();
 app.Run();
 
