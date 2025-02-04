@@ -101,5 +101,39 @@ namespace NzWalks.Controllers
             //return 201 response
             return CreatedAtAction(nameof(GetRegionById),new{code=regions.Code}, regionDto);
         }
+
+
+       [HttpPut]
+       [Route("{id}")]
+       public IActionResult PutRegion(Guid id, PutRegionDto putRegionDto)
+       {
+            //verify the id and get data and store in domain model
+            var regionDomain = _dbContext.RegionsSet.FirstOrDefault(x => x.ID == id);
+
+            if (regionDomain == null)
+            {
+                return NotFound();
+            }
+
+            //map dto to domain models
+            regionDomain.Code = putRegionDto.Code;
+            regionDomain.Name = putRegionDto.Name;
+            regionDomain.RegionImgUrl = putRegionDto.RegionImgUrl;
+
+            //update domain model
+            _dbContext.SaveChanges();
+
+            //map domain model to dto
+            var regionDto = new RegionDto()
+             {  
+                ID = regionDomain.ID,
+                Code=regionDomain.Code, 
+                Name=regionDomain.Name, 
+                RegionImgUrl=regionDomain.RegionImgUrl
+            };
+
+            //return ok
+            return Ok(regionDto);
+       }
     }
 }
