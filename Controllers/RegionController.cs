@@ -105,7 +105,7 @@ namespace NzWalks.Controllers
 
        [HttpPut]
        [Route("{id}")]
-       public IActionResult PutRegion(Guid id, PutRegionDto putRegionDto)
+       public IActionResult PutRegion([FromRoute]Guid id,[FromBody] PutRegionDto putRegionDto)
        {
             //verify the id and get data and store in domain model
             var regionDomain = _dbContext.RegionsSet.FirstOrDefault(x => x.ID == id);
@@ -134,6 +134,25 @@ namespace NzWalks.Controllers
 
             //return ok
             return Ok(regionDto);
+       }
+
+
+       [HttpDelete]
+       [Route("{id}")]
+       public IActionResult deleteRegionById(Guid id)
+       {
+            //fetch the id
+            var regionDomain = _dbContext.RegionsSet.FirstOrDefault(x=>x.ID == id);
+
+
+            //validate id
+            if(regionDomain == null)
+            {
+                return BadRequest(" bad request");
+            }
+
+            //return ok
+            return Ok ();
        }
     }
 }
