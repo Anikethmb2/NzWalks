@@ -26,6 +26,20 @@ namespace NzWalks.Repositories
             return region;
         }
 
+        public async Task<Region?> DeleteAsync(Guid id)
+        {
+           var region = await _dbContext.RegionsSet.FindAsync( id );
+           if (region == null)
+           {
+                return null;
+           }
+
+           _dbContext.Remove(region);
+           _dbContext.SaveChanges();
+
+           return region;
+        }
+
         public async Task<List<Region>> GetAllAsync()
         {
             return await _dbContext.RegionsSet.ToListAsync();
