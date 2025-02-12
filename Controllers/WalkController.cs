@@ -36,7 +36,7 @@ namespace NzWalks.Controllers
         
             //map domain models to dto
             var walkDto = mapper.Map<WalkDto>(walkDomian);
-            //return
+            //return 
 
             return Ok(walkDto);
         }

@@ -17,6 +17,7 @@ builder.Services.AddControllers();
 
 //DI of repository
 builder.Services.AddScoped<IRegionRepository,SqlRegionRepository>();
+builder.Services.AddScoped<IWalkRepository,SqlWalkRepository>();
 
 //Adding Database DI
 builder.Services.AddDbContext<NzWalkDbContext>(options =>
