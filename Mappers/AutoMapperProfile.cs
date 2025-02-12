@@ -15,6 +15,8 @@ namespace NzWalks.Mappers
             CreateMap<Region, RegionDto>().ReverseMap();
             CreateMap<Region,AddNewRegionDto>().ReverseMap();
             CreateMap<Region,PutRegionDto>().ReverseMap();
+            CreateMap<Walks,AddWalkDto>().ReverseMap();
+            CreateMap<Walks,WalkDto>().ReverseMap();
         }
     }
 }
