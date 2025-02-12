@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NzWalks.Data;
 using NzWalks.Models.Domain;
 
@@ -23,6 +24,11 @@ namespace NzWalks.Repositories
 
              return walks;
 
+        }
+
+        public async Task<List<Walks>> GetAllAsync()
+        {
+           return await dbContext.WalksSet.ToListAsync();
         }
     }
 }

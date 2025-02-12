@@ -29,14 +29,25 @@ namespace NzWalks.Controllers
         public async Task<IActionResult> Create([FromBody] AddWalkDto addWalkDto)
         {
             //Map DTO to Domain Model
-            var map = mapper.Map<Walks>(addWalkDto);
+            var walkDomain = mapper.Map<Walks>(addWalkDto);
 
             //create repo pattern
-            var walkDomian = await walkRepository.CreateAsync(map);
+            var walkDomian = await walkRepository.CreateAsync(walkDomain);
         
             //map domain models to dto
             var walkDto = mapper.Map<WalkDto>(walkDomian);
             //return 
+
+            return Ok(walkDto);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var walkDomain = await walkRepository.GetAllAsync();
+
+            var walkDto = mapper.Map<List<WalkDto>>(walkDomain);
 
             return Ok(walkDto);
         }
