@@ -30,5 +30,32 @@ namespace NzWalks.Repositories
         {
            return await dbContext.WalksSet.Include("Difficulty").Include("Region").ToListAsync();
         }
+
+        public async Task<Walks?> GetWalkByIdAsync(Guid id)
+        {
+            return await dbContext.WalksSet.Include("Difficulty").Include("Region").
+            FirstOrDefaultAsync(x => x.ID == id);
+        }
+
+        public async Task<Walks?> UpdateWalkAsync(Guid id,Walks walk)
+        {
+            var WalkExist = await dbContext.WalksSet.Include("Difficulty").Include("Region").FirstOrDefaultAsync(x => x.ID == id);
+
+            if (WalkExist == null)
+            {
+                return null;
+            }
+
+
+            WalkExist.ID = walk.ID;
+            WalkExist.Name = walk.Name;
+            WalkExist.Description = walk.Description;
+            WalkExist.WalkImgUrl = walk.WalkImgUrl;
+            WalkExist.LengthInKm = walk.LengthInKm;
+            WalkExist.DifficultyId = walk.DifficultyId;
+            WalkExist.RegionId  = walk.RegionId;
+
+            return WalkExist;
+        }
     }
 }

@@ -10,5 +10,10 @@ namespace NzWalks.Repositories
     {
          Task<Walks> CreateAsync(Walks walks);
          Task<List<Walks>> GetAllAsync();
+
+         Task<Walks?> GetWalkByIdAsync(Guid id);
+
+         Task<Walks> UpdateWalkAsync(Guid id, Walks walk);
+       // Task UpdateWalkAsync(Walks walkDomain);
     }
 }
