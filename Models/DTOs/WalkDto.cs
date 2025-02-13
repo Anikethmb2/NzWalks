@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NzWalks.Models.Domain;
 
 namespace NzWalks.Models.DTOs
 {
@@ -18,5 +19,12 @@ namespace NzWalks.Models.DTOs
         public Guid DifficultyId{ get; set; }
 
         public Guid RegionId{ get; set; }
+
+
+        //navigation prop
+
+        public RegionDto region { get; set; }
+
+        public DifficultyDto difficulty { get; set; }   
     }
 }
