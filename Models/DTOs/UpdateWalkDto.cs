@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NzWalks.Models.DTOs
 {
-    public class UpdateWalk
+    public class UpdateWalkDto
     {
         public string Name{ get; set; }
 

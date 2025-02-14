@@ -20,11 +20,5 @@ namespace NzWalks.Models.DTOs
 
         public Guid RegionId{ get; set; }
 
-
-        //navigation prop
-
-        public RegionDto region { get; set; }
-
-        public DifficultyDto difficulty { get; set; }   
     }
 }

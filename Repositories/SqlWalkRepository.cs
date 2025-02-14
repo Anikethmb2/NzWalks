@@ -47,7 +47,7 @@ namespace NzWalks.Repositories
             }
 
 
-            WalkExist.ID = walk.ID;
+            //WalkExist.ID = walk.ID;
             WalkExist.Name = walk.Name;
             WalkExist.Description = walk.Description;
             WalkExist.WalkImgUrl = walk.WalkImgUrl;
