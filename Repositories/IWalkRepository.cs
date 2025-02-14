@@ -15,5 +15,8 @@ namespace NzWalks.Repositories
 
          Task<Walks?> UpdateWalkAsync(Guid id, Walks walk);
        // Task UpdateWalkAsync(Walks walkDomain);
+
+
+       Task<Walks?> DeleteWalkAsync(Guid id);
     }
 }

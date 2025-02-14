@@ -26,6 +26,23 @@ namespace NzWalks.Repositories
 
         }
 
+        public async Task<Walks?> DeleteWalkAsync(Guid id)
+        {
+           var walkExists = await dbContext.WalksSet.Include("Difficulty").Include("Region").FirstOrDefaultAsync(x => x.ID == id);
+
+           if (walkExists == null)
+           {
+             return null;
+           }
+
+             dbContext.WalksSet.Remove(walkExists);
+             await dbContext.SaveChangesAsync();
+
+             return walkExists;
+
+
+        }
+
         public async Task<List<Walks>> GetAllAsync()
         {
            return await dbContext.WalksSet.Include("Difficulty").Include("Region").ToListAsync();
@@ -54,6 +71,8 @@ namespace NzWalks.Repositories
             WalkExist.LengthInKm = walk.LengthInKm;
             WalkExist.DifficultyId = walk.DifficultyId;
             WalkExist.RegionId  = walk.RegionId;
+
+            await dbContext.SaveChangesAsync();
 
             return WalkExist;
         }

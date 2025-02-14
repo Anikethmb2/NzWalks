@@ -72,7 +72,7 @@ namespace NzWalks.Controllers
 
         //Update function
         [HttpPut]
-        [Route("id")]
+        [Route("{id}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateWalkDto updateWalk )
         {
             var walkDomain = mapper.Map<Walks> (updateWalk);
@@ -85,6 +85,24 @@ namespace NzWalks.Controllers
             }
 
             return Ok(mapper.Map<UpdateWalkDto>(walkDomian));
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+
+        public async Task<IActionResult> Delete([FromRoute]Guid id)
+        {
+            var walkDomain = await walkRepository.DeleteWalkAsync(id);
+
+            if (walkDomain == null)
+            {
+                return NotFound();
+            }
+
+            var walkDto = mapper.Map<WalkDto>(walkDomain);
+
+            return Ok(walkDto);
+
         }
 
     }
