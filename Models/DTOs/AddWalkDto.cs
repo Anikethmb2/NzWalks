@@ -9,7 +9,7 @@ namespace NzWalks.Models.DTOs
 {
     public class AddWalkDto
     {
-        [Required]
+        
          public string Name{ get; set; }
 
         public string Description{ get; set; }

@@ -95,6 +95,10 @@ namespace NzWalks.Controllers
             //     RegionImgUrl = addNewRegionDto.RegionImgUrl,
             // };
             //add auto map dto to domain model
+
+            if(ModelState.IsValid)
+            {
+
             var regions = mapper.Map<Region>(addNewRegionDto);
 
             //save the data in db
@@ -117,6 +121,11 @@ namespace NzWalks.Controllers
 
             //return 201 response
             return CreatedAtAction(nameof(GetRegionById), new { code = regions.Code }, regionDto);
+        }
+        else
+        {
+            return BadRequest(ModelState);
+        }
         }
 
 
