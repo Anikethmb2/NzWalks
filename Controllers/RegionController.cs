@@ -7,6 +7,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using NzWalks.CustomActionFilter;
 using NzWalks.Data;
 using NzWalks.Models.Domain;
 using NzWalks.Models.DTOs;
@@ -85,6 +86,7 @@ namespace NzWalks.Controllers
         }
 
         [HttpPost]
+        [ValidateModel]
         public async Task<IActionResult> AddNewRegion(AddNewRegionDto addNewRegionDto)
         {
             //map dto to domain model
@@ -96,8 +98,7 @@ namespace NzWalks.Controllers
             // };
             //add auto map dto to domain model
 
-            if(ModelState.IsValid)
-            {
+           
 
             var regions = mapper.Map<Region>(addNewRegionDto);
 
@@ -121,11 +122,7 @@ namespace NzWalks.Controllers
 
             //return 201 response
             return CreatedAtAction(nameof(GetRegionById), new { code = regions.Code }, regionDto);
-        }
-        else
-        {
-            return BadRequest(ModelState);
-        }
+       
         }
 
 
