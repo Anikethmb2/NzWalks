@@ -43,7 +43,7 @@ namespace NzWalks.Repositories
 
         }
 
-        public async Task<List<Walks>> GetAllAsync()
+        public async Task<List<Walks>> GetAllAsync(string? filterOn=null,string? filterQuery=null)
         {
            return await dbContext.WalksSet.Include("Difficulty").Include("Region").ToListAsync();
         }
