@@ -45,7 +45,16 @@ namespace NzWalks.Repositories
 
         public async Task<List<Walks>> GetAllAsync(string? filterOn=null,string? filterQuery=null)
         {
-           return await dbContext.WalksSet.Include("Difficulty").Include("Region").ToListAsync();
+            var walks = dbContext.WalksSet.Include("Difficulty").Include("Region").AsQueryable();
+            if(string.IsNullOrWhiteSpace(filterOn)==false&& string.IsNullOrWhiteSpace(filterQuery) ==false)
+            {
+                if(filterOn.Contains("name", StringComparison.OrdinalIgnoreCase))
+                walks = walks.Where(x => x.Name.Contains(filterQuery));
+            }
+
+            return await walks.ToListAsync();
+
+           //return await dbContext.WalksSet.Include("Difficulty").Include("Region").ToListAsync();
         }
 
         public async Task<Walks?> GetWalkByIdAsync(Guid id)
