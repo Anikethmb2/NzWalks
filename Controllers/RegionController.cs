@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -17,6 +18,7 @@ namespace NzWalks.Controllers
 {
     [Route("regions")]
     [ApiController]
+    [Authorize]
     public class RegionController : ControllerBase
     {
         private readonly NzWalkDbContext _dbContext;

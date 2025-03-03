@@ -138,3 +138,5 @@ D:\Practice file\WebApi\NzWalks\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.
 D:\Practice file\WebApi\NzWalks\obj\Debug\net8.0\NzWalks.sourcelink.json
 D:\Practice file\WebApi\NzWalks\bin\Debug\net8.0\AutoMapper.dll
 D:\Practice file\WebApi\NzWalks\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Practice file\WebApi\NzWalks\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Practice file\WebApi\NzWalks\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
