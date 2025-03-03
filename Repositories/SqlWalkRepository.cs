@@ -54,7 +54,6 @@ namespace NzWalks.Repositories
                 walks = walks.Where(x => x.Name.Contains(filterQuery));
             }
 
-            //SOrting
             if(string.IsNullOrWhiteSpace(sortBy)==false)
             {
                 if(sortBy.Contains("name",StringComparison.OrdinalIgnoreCase))
